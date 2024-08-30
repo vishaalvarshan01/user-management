@@ -25,4 +25,11 @@ function stringAvatar(name: string) {
     };
 }
 
-export {stringAvatar,stringToColor};
+const fetchUserDetails = async (id: string) => {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/users`)
+    console.log("response : "  + await fetch(`https://jsonplaceholder.typicode.com/users/${id}`))
+    return response.json();
+
+}
+
+export {stringAvatar, stringToColor, fetchUserDetails};
