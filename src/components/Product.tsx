@@ -4,33 +4,31 @@ import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
+import useCart from '../store/CartStore.ts';
+import {ProductType} from '../constants/ProductTypes.ts';
 
-type ProductDetail = {
-    id: number;
-    title: string;
-    description: string;
-    image: string;
-}
+const Product = (product: ProductType) => {
 
-const Product = (props : ProductDetail) => {
+    const addToCart = useCart((state) => state.addToCart);
+
     return (
-        <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <Card sx={{height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
             <CardMedia
-                sx={{ height: 140 }}
-                image={props.image}
-                title="green iguana"
+                sx={{height: 140}}
+                image={product.image}
+                title={product.title}
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    {props.title}
+                    {product.title}
                 </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    {props.description}
+                <Typography variant="body2" sx={{color: 'text.secondary'}}>
+                    {product.description}
                 </Typography>
             </CardContent>
             <CardActions>
                 <Button size="small">Buy</Button>
-                <Button size="small">Add to Cart</Button>
+                <Button size="small" onClick={() => addToCart(product)}>Add to Cart</Button>
             </CardActions>
         </Card>
     );

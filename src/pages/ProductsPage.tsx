@@ -14,7 +14,7 @@ const ProductsPage = () => {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        axios.get("https://fakestoreapi.com/products").then((response) => {
+            axios.get("https://fakestoreapi.com/products").then((response) => {
             setProducts(response.data);
         }).then(() => {
             setIsLoading(false)
