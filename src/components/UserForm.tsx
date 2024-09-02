@@ -1,9 +1,8 @@
 import {useEffect, useState} from 'react';
 import {useForm, SubmitHandler} from 'react-hook-form';
 import axios from 'axios';
-import {ToastContainer, toast} from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 
-import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
 
 import {UserFormType} from '../constants/UserTypes.ts';
