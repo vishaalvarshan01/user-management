@@ -4,7 +4,7 @@ import {User} from '../constants/UserTypes.ts';
 import {useQuery} from "@tanstack/react-query";
 // import {fetchUserDetails} from '../utils/UserMethods.ts'
 
-const fetchUserDetails = async (id : string) => {
+const fetchUserDetails = async (id: string | undefined) => {
     const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
     if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -18,12 +18,12 @@ const UserPage = () => {
 
     // const [isLoading, setIsLoading] = useState(true);
 
-    const {isLoading, isError, data : user, error} = useQuery<User>({
+    const {isLoading, isError, data: user, error} = useQuery<User>({
         queryKey: ['user'],
         queryFn: () => fetchUserDetails(id),
     })
 
-    if(isError) return <Typography variant="h5">Something went wrong {error.message}</Typography>;
+    if (isError) return <Typography variant="h5">Something went wrong {error.message}</Typography>;
 
     if (isLoading) return <Typography variant="button">Loading...</Typography>;
 
